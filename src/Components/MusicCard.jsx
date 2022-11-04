@@ -51,7 +51,9 @@ class MusicCard extends Component {
         this.setState({
           loading: false,
         });
-        func();
+        if (func) {
+          func();
+        }
       });
     }
   };
