@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import CardAlbuns from './CardAlbuns';
+import Loading from './Loading';
+
+let albumName = '';
 
 class FormSearch extends Component {
   constructor() {
@@ -6,6 +11,10 @@ class FormSearch extends Component {
     this.state = {
       inputValue: '',
       disabled: true,
+      loading: false,
+      requisit: false,
+      empty: false,
+      albuns: [],
     };
   }
 
@@ -23,28 +32,64 @@ class FormSearch extends Component {
     });
   };
 
+  handleClick = (e) => {
+    e.preventDefault();
+    const { inputValue } = this.state;
+    albumName = inputValue;
+    this.setState({
+      loading: true,
+      inputValue: '',
+    }, async () => {
+      const request = await searchAlbumsAPI(albumName.toString());
+      if (request.length) {
+        this.setState({
+          loading: false,
+          albuns: [...request],
+          requisit: true,
+          empty: false,
+        });
+        return;
+      }
+      this.setState({
+        loading: false,
+        empty: true,
+        requisit: false,
+      });
+    });
+  };
+
   render() {
-    const { inputValue, disabled } = this.state;
+    const { inputValue, disabled, loading, albuns, requisit, empty } = this.state;
     return (
       <div>
-        <form>
-          <label htmlFor="search-artist-input">
-            <input
-              type="text"
-              id="search-artist-input"
-              data-testid="search-artist-input"
-              value={ inputValue }
-              onChange={ this.handleChange }
-            />
-          </label>
-          <button
-            type="submit"
-            data-testid="search-artist-button"
-            disabled={ disabled }
-          >
-            Pesquisar
-          </button>
-        </form>
+        {loading ? <Loading /> : (
+          <form>
+            <label htmlFor="search-artist-input">
+              <input
+                type="text"
+                id="search-artist-input"
+                data-testid="search-artist-input"
+                value={ inputValue }
+                onChange={ this.handleChange }
+              />
+            </label>
+            <button
+              type="submit"
+              data-testid="search-artist-button"
+              disabled={ disabled }
+              onClick={ this.handleClick }
+            >
+              Pesquisar
+            </button>
+          </form>)}
+        { empty && <h1>Nenhum álbum foi encontrado</h1> }
+        {requisit && (
+          <div className="resultAlbuns">
+            <h4>{`Resultado de álbuns de: ${albumName}`}</h4>
+            {albuns.map((album) => (
+              <CardAlbuns key={ album.collectionId } albuns={ album } />))}
+          </div>
+        ) }
       </div>
     );
   }

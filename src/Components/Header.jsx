@@ -24,10 +24,13 @@ class Header extends Component {
     const { name, loading } = this.state;
     return (
       <header data-testid="header-component">
+        <h1>Trybetunes</h1>
         { loading ? <Loading /> : <p data-testid="header-user-name">{name}</p> }
-        <Link data-testid="link-to-search" to="/search">Pesquisa</Link>
-        <Link data-testid="link-to-favorites" to="/favorites">Musicas Favoritas</Link>
-        <Link data-testid="link-to-profile" to="/profile">Perfil</Link>
+        <nav>
+          <Link data-testid="link-to-search" to="/search">Pesquisa</Link>
+          <Link data-testid="link-to-favorites" to="/favorites">Musicas Favoritas</Link>
+          <Link data-testid="link-to-profile" to="/profile">Perfil</Link>
+        </nav>
       </header>
     );
   }
