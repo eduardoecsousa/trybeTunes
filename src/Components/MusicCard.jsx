@@ -98,10 +98,12 @@ MusicCard.propTypes = {
     trackId: PropTypes.number,
     artworkUrl60: PropTypes.string,
   }),
+  func: PropTypes.func,
 };
 
 MusicCard.defaultProps = {
   music: {},
+  func: undefined,
 };
 
 export default MusicCard;
