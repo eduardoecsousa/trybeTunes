@@ -18,7 +18,7 @@ class MusicCard extends Component {
     }, async () => {
       const request = await getFavoriteSongs();
       const { music: { trackId } } = this.props;
-      const validation = request.forEach((favorit) => (
+      request.forEach((favorit) => (
         favorit.trackId === trackId && this.setState({
           valueCheck: true })));
       this.setState({
