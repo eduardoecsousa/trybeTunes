@@ -42,7 +42,7 @@ class Album extends Component {
               </div>
               <div>
                 {loneyMusic.map((music) => (
-                  <MusicCard key={ music.trackNumber } music={ music } />))}
+                  <MusicCard key={ music.trackId } music={ music } />))}
               </div>
             </div>
           )}
