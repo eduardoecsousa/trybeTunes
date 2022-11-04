@@ -8,14 +8,14 @@ class CardAlbuns extends Component {
     const { artistName, collectionId, collectionName,
       artworkUrl100 } = albuns;
     return (
-      <div className="albums">
+      <div className="card">
         <Link
           to={ `/album/${collectionId}` }
           data-testid={ `link-to-album-${collectionId}` }
         >
           <img src={ artworkUrl100 } alt={ collectionName } />
-          <p>{collectionName}</p>
-          <p>{artistName}</p>
+          <p className="album" data-testid="album-name">{collectionName}</p>
+          <p className="artist" data-testid="artist-name">{artistName}</p>
         </Link>
       </div>
     );

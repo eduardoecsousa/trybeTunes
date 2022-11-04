@@ -28,3 +28,80 @@ code {
   display: flex;
   flex-wrap: wrap;
 }
+
+.card {
+  border-radius: 5px;
+  box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+  padding: 30px;
+  margin: 20px;
+  width: 200px;
+  transition: all 0.3s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+* {
+  text-decoration: none;
+}
+
+.card .album {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+}
+ 
+.card .artist {
+  color: #a3a5ae;
+  font-size: 16px;
+}
+ 
+.image {
+  float: right;
+  max-width: 64px;
+  max-height: 64px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #a3a5ae;
+}
+
+.titleName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.ImgUser {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+.User {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav * {
+  font-size: 26px;
+  color: black;
+}
+
+.musicsAlbum {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}

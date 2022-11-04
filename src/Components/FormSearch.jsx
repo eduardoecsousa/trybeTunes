@@ -84,10 +84,12 @@ class FormSearch extends Component {
           </form>)}
         { empty && <h1>Nenhum álbum foi encontrado</h1> }
         {requisit && (
-          <div className="resultAlbuns">
+          <div>
             <h4>{`Resultado de álbuns de: ${albumName}`}</h4>
-            {albuns.map((album) => (
-              <CardAlbuns key={ album.collectionId } albuns={ album } />))}
+            <div className="resultAlbuns">
+              {albuns.map((album) => (
+                <CardAlbuns key={ album.collectionId } albuns={ album } />))}
+            </div>
           </div>
         ) }
       </div>
