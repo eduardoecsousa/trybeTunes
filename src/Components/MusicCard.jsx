@@ -28,6 +28,7 @@ class MusicCard extends Component {
   }
 
   handleChange = ({ target }) => {
+    const { func } = this.props;
     const { checked } = target;
     if (checked) {
       this.setState({
@@ -50,19 +51,21 @@ class MusicCard extends Component {
         this.setState({
           loading: false,
         });
+        func();
       });
     }
   };
 
   render() {
     const { music } = this.props;
-    const { trackName, previewUrl, trackId } = music;
+    const { trackName, previewUrl, trackId, artworkUrl60 } = music;
     const { loading, valueCheck } = this.state;
     return (
       <div>
         {loading ? <Loading /> : (
           <div>
             <h5>{trackName}</h5>
+            <img src={ artworkUrl60 } alt={ trackName } />
             <audio data-testid="audio-component" src={ previewUrl } controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
@@ -93,6 +96,7 @@ MusicCard.propTypes = {
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
     trackId: PropTypes.number,
+    artworkUrl60: PropTypes.string,
   }),
 };
 
