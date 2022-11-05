@@ -19,7 +19,6 @@ class Favorites extends Component {
 
   async componentWillUnmount() {
     const { loading } = this.state;
-    console.log('agr');
     if (loading) {
       console.log('entrou');
     }

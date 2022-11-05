@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import { getUser } from '../services/userAPI';
 import Loading from '../Components/Loading';
-import CardProfile from '../Components/CardProfile';
 
 class Profile extends Component {
   constructor() {
