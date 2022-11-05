@@ -13,7 +13,7 @@ class ProfileEdit extends Component {
       inputEmail: '',
       inputDescription: '',
       inputImage: '',
-      disabilet: true,
+      disabilet: false,
       direct: false,
     };
   }
@@ -24,6 +24,21 @@ class ProfileEdit extends Component {
     }, async () => {
       const requestUser = await getUser();
       const { name, email, image, description } = requestUser;
+      const { inputName, inputEmail,
+        inputDescription, inputImage } = this.state;
+      const validationEmail = /\S+@\S+\.\S+/;
+      const validacoes = [
+        validationEmail.test(inputEmail),
+        inputName.length > 0,
+        inputDescription.length > 0,
+        inputImage.length > 0,
+      ];
+      const resultValid = validacoes.some((e) => e === false);
+      if (!resultValid) {
+        this.setState({
+          disabilet: false,
+        });
+      }
       this.setState({
         loading: false,
         inputName: name,
@@ -53,6 +68,10 @@ class ProfileEdit extends Component {
         this.setState({
           disabilet: false,
         });
+      } else {
+        this.setState({
+          disabilet: true,
+        });
       }
     });
   };
@@ -61,20 +80,19 @@ class ProfileEdit extends Component {
     e.preventDefault();
     this.setState({
       loading: true,
-    }, async () => {
-      const { inputName, inputEmail,
-        inputDescription, inputImage } = this.state;
-      const objUsers = {
-        name: inputName,
-        email: inputEmail,
-        image: inputImage,
-        description: inputDescription,
-      };
-      await updateUser(objUsers);
-      this.setState({
-        loading: false,
-        direct: true,
-      });
+    });
+    const { inputName, inputEmail,
+      inputDescription, inputImage } = this.state;
+    const objUsers = {
+      name: inputName,
+      email: inputEmail,
+      image: inputImage,
+      description: inputDescription,
+    };
+    await updateUser(objUsers);
+    this.setState({
+      loading: false,
+      direct: true,
     });
   };
 

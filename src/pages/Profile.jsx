@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import { getUser } from '../services/userAPI';
 import Loading from '../Components/Loading';
+import CardProfile from '../Components/CardProfile';
 
 class Profile extends Component {
   constructor() {
@@ -46,10 +47,11 @@ class Profile extends Component {
               <h3>Descrição:</h3>
               <p id="description">{description}</p>
             </label>
-            <Link to="/profile/edit">Editar perfil</Link>
+            <Link to="/profile/edit">
+              Editar perfil
+            </Link>
           </div>
         )}
-
       </div>
     );
   }

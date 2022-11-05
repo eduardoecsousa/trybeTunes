@@ -4,11 +4,11 @@ class Loading extends Component {
   render() {
     return (
       <div className="loading">
-        <img
+        {/* <img
           src="https://institutoconexo.com.br/assets/images/preloader.gif"
           alt="load"
           className="imgLoad"
-        />
+        /> */}
         <p>Carregando...</p>
       </div>
     );
