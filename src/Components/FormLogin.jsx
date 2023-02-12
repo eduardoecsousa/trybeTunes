@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
+import logo from '../images/logo.svg';
 import Loading from './Loading';
 
 class FormLogin extends Component {
@@ -49,13 +50,13 @@ class FormLogin extends Component {
       <div>
         {direct && <Redirect to="/search" />}
         {loading ? <Loading /> : (
-          <div>
-            <h1>Login</h1>
+          <div className="login">
             <form>
+              <img src={ logo } alt="logo-pag" />
               <label htmlFor="login-name-input">
-                UserName
                 <input
                   data-testid="login-name-input"
+                  placeholder="qual o seu nome ?"
                   name="userName"
                   type="text"
                   id="login-name-input"

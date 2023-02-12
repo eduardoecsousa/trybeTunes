@@ -1,0 +1,52 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  form {
+    width: 750px;
+    height: 450px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 26px rgba(68, 73, 85, 0.2);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    input[type=text] {
+      width: 400px;
+      height: 40px;
+      border: 1px solid #003BE5;
+      border-radius: 100px;
+      display: flex;
+      text-align: center;
+      margin-top: 60px;
+      &::placeholder {
+        font-family: 'Epilogue';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        text-align: center;
+      }
+    }
+    button {
+      width: 400px;
+      height: 40px;
+      background: #003BE5;
+      border-radius: 100px;
+      font-family: 'Epilogue';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 14px;
+      text-align: center;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-top: 20px;
+      cursor: pointer;
+      box-shadow: 0px 14px 14px rgba(68, 73, 85, 0.3);
+    }
+  }
+}

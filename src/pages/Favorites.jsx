@@ -39,7 +39,7 @@ class Favorites extends Component {
   render() {
     const { loading, favoriteMusic } = this.state;
     return (
-      <div data-testid="page-favorites">
+      <div data-testid="page-favorites" className="pages">
         <Header />
         {loading ? <Loading /> : (
           <div>

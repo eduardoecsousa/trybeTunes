@@ -32,15 +32,15 @@ class Album extends Component {
     const { loading, albumMusic } = this.state;
     const loneyMusic = albumMusic.filter((e, i) => i > 0);
     return (
-      <div data-testid="page-album">
+      <div data-testid="page-album" className="pages">
         <Header />
         {loading ? <Loading />
           : (
-            <div className="musicsAlbum">
+            <div className="musics-album">
               <div>
                 <CardAlbuns albuns={ albumMusic[0] } />
               </div>
-              <div>
+              <div className="list-music">
                 {loneyMusic.map((music) => (
                   <MusicCard key={ music.trackId } music={ music } />))}
               </div>

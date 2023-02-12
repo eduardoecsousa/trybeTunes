@@ -61,7 +61,7 @@ class FormSearch extends Component {
   render() {
     const { inputValue, disabled, loading, albuns, requisit, empty } = this.state;
     return (
-      <div>
+      <div className="form-search">
         {loading ? <Loading /> : (
           <form>
             <label htmlFor="search-artist-input">
@@ -69,6 +69,7 @@ class FormSearch extends Component {
                 type="text"
                 id="search-artist-input"
                 data-testid="search-artist-input"
+                placeholder="nome do artista"
                 value={ inputValue }
                 onChange={ this.handleChange }
               />
@@ -82,16 +83,18 @@ class FormSearch extends Component {
               Pesquisar
             </button>
           </form>)}
-        { empty && <h1>Nenhum álbum foi encontrado</h1> }
-        {requisit && (
-          <div>
-            <h4>{`Resultado de álbuns de: ${albumName}`}</h4>
-            <div className="resultAlbuns">
-              {albuns.map((album) => (
-                <CardAlbuns key={ album.collectionId } albuns={ album } />))}
+        <div className="result-search">
+          { empty && <h1>Nenhum álbum foi encontrado</h1> }
+          {requisit && (
+            <div>
+              <h4>{`Resultado de álbuns de: ${albumName}`}</h4>
+              <div className="result-albuns">
+                {albuns.map((album) => (
+                  <CardAlbuns key={ album.collectionId } albuns={ album } />))}
+              </div>
             </div>
-          </div>
-        ) }
+          ) }
+        </div>
       </div>
     );
   }

@@ -29,7 +29,7 @@ class Profile extends Component {
     const { loading, user } = this.state;
     const { name, email, image, description } = user;
     return (
-      <div data-testid="page-profile">
+      <div data-testid="page-profile" className="pages">
         <Header />
         {loading ? <Loading /> : (
           <div>

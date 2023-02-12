@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import heart from '../images/iconHeart.svg';
+import heartClear from '../images/iconHeartClear.svg';
 
 class MusicCard extends Component {
   constructor(props) {
@@ -60,14 +62,16 @@ class MusicCard extends Component {
 
   render() {
     const { music } = this.props;
-    const { trackName, previewUrl, trackId, artworkUrl60 } = music;
+    const { trackName, previewUrl, trackId } = music;
     const { loading, valueCheck } = this.state;
     return (
       <div>
         {loading ? <Loading /> : (
-          <div>
-            <h5>{trackName}</h5>
-            <img src={ artworkUrl60 } alt={ trackName } />
+          <div className="music">
+            <div className="name-music">
+              <h5>{trackName}</h5>
+            </div>
+            {/* <img src={ artworkUrl60 } alt={ trackName } /> */}
             <audio data-testid="audio-component" src={ previewUrl } controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
@@ -82,10 +86,14 @@ class MusicCard extends Component {
                 data-testid={ `checkbox-music-${trackId}` }
                 checked={ valueCheck }
                 onChange={ this.handleChange }
+                className="checkbox"
               />
-              Favorita
+              {
+                valueCheck
+                  ? <img src={ heart } alt="herart" />
+                  : <img src={ heartClear } alt="herart" />
+              }
             </label>
-            <hr />
           </div>
         )}
       </div>
